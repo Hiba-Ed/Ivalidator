@@ -1,0 +1,26 @@
+<style>
+  .error { color:red }
+</style>
+
+<form method="POST"action="/form">
+  {{ csrfField() }}
+  <table>
+    <tr>
+      <td align="left">Username:</td>
+      <td align="left"><input type="text" name="username" value="{{ old('username', '') }}" />
+        @if(getErrorFor('field') === 'username')
+          <span class="error">{{ getErrorFor('message') }}</span>
+        @endif
+      </td>
+    </tr>
+    <tr>
+      <td align="left">Email:</td>
+      <td align="left"><input type="text" name="email" value="{{ old('email', '') }}" />
+        @if(getErrorFor('field') === 'email')
+          <span class="error">{{ getErrorFor('message') }}</span>
+        @endif
+      </td>
+    </tr>
+  </table>
+  <button type="submit">Submit</button>
+</form>
